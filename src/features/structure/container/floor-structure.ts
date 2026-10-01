@@ -406,6 +406,18 @@ export class FloorStructureComponent {
       status: 'occupied',
       capacity: 2,
     },
+    // Sleek table for 5, bottom-right corner
+    {
+      id: 40,
+      label: '40',
+      x: 680,
+      y: 480,
+      shape: 'rect',
+      width: 70,
+      height: 36,
+      status: 'available',
+      capacity: 5,
+    },
   ]);
 
   selectedTable = signal<TableItem | null>(null);
