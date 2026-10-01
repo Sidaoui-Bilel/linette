@@ -1,4 +1,4 @@
 import { Routes } from '@angular/router';
-import { FloorStructureComponent } from '../features/structure/container/floor-structure';
+import { HomeComponent } from '../features/home/container/home';
 
-export const routes: Routes = [{ path: '', component: FloorStructureComponent }];
+export const routes: Routes = [{ path: '', component: HomeComponent }];

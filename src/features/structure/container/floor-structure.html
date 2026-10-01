@@ -1,17 +1,17 @@
 <div
-  class="flex flex-col gap-6 rounded-3xl bg-neutral-950 p-6 shadow-2xl ring-1 ring-white/10 lg:flex-row lg:items-start"
+  class="flex flex-col gap-6 rounded-3xl bg-wood-50 p-6 shadow-xl ring-1 ring-wood-200 lg:flex-row lg:items-start"
 >
   <div class="min-w-0 flex-1">
-    <h2 class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">Floor Plan</h2>
+    <h2 class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-duck-600">Plan de salle</h2>
 
     <svg
-      class="h-auto w-full rounded-2xl bg-neutral-900 ring-1 ring-white/5"
+      class="h-auto w-full rounded-2xl bg-wood-100 ring-1 ring-wood-200"
       viewBox="0 0 800 600"
       preserveAspectRatio="xMidYMid meet"
     >
       <defs>
         <pattern id="floor-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-          <path d="M 20 0 L 0 0 0 20" class="fill-none stroke-white/5" stroke-width="1"></path>
+          <path d="M 20 0 L 0 0 0 20" class="fill-none stroke-wood-200" stroke-width="1"></path>
         </pattern>
       </defs>
 
@@ -19,10 +19,11 @@
       <rect x="40" y="40" width="720" height="500" fill="url(#floor-grid)"></rect>
 
       <!-- Walls -->
-      <g class="stroke-neutral-300" stroke-width="4" stroke-linecap="round">
+      <g class="stroke-wood-800" stroke-width="4" stroke-linecap="round">
         <line x1="40" y1="40" x2="375" y2="40"></line>
         <line x1="435" y1="40" x2="760" y2="40"></line>
-        <line x1="760" y1="40" x2="760" y2="540"></line>
+        <line x1="760" y1="40" x2="760" y2="235"></line>
+        <line x1="760" y1="265" x2="760" y2="540"></line>
         <line x1="760" y1="540" x2="40" y2="540"></line>
         <line x1="40" y1="540" x2="40" y2="40"></line>
       </g>
@@ -33,13 +34,13 @@
         y1="40"
         x2="503"
         y2="500"
-        class="stroke-neutral-300/60"
+        class="stroke-wood-400"
         stroke-width="3"
         stroke-linecap="round"
       ></line>
 
       <!-- Door -->
-      <g class="stroke-sky-400/70">
+      <g class="stroke-duck-600">
         <path
           d="M375,100 A60,60 0 0 1 435,40"
           class="fill-none"
@@ -52,9 +53,29 @@
         x="405"
         y="28"
         text-anchor="middle"
-        class="fill-neutral-500 text-[11px] font-semibold uppercase tracking-widest"
+        class="fill-duck-600 text-[11px] font-semibold uppercase tracking-widest"
       >
-        Door
+        Entrée
+      </text>
+
+      <!-- Service door, between the 34-35 and 36-37 tables -->
+      <g class="stroke-duck-600">
+        <path
+          d="M730,235 A30,30 0 0 1 760,265"
+          class="fill-none"
+          stroke-width="1.5"
+          stroke-dasharray="4 4"
+        ></path>
+        <line x1="760" y1="235" x2="730" y2="235" stroke-width="3"></line>
+      </g>
+      <text
+        x="748"
+        y="250"
+        text-anchor="middle"
+        transform="rotate(-90 748 250)"
+        class="fill-duck-600 text-[9px] font-semibold uppercase tracking-widest"
+      >
+        Service
       </text>
 
       <!-- Bar -->
@@ -64,10 +85,10 @@
         width="275"
         height="18"
         rx="6"
-        class="fill-amber-900/60 stroke-amber-600/60"
-        stroke-width="1"
+        class="fill-pine-800 stroke-sun-400"
+        stroke-width="1.5"
       ></rect>
-      <text x="80" y="500" class="fill-neutral-500 text-[11px] font-semibold uppercase tracking-widest">
+      <text x="80" y="500" class="fill-pine-700 text-[11px] font-semibold uppercase tracking-widest">
         Bar
       </text>
 
@@ -76,7 +97,7 @@
         <g
           (click)="selectTable(table)"
           class="origin-center cursor-pointer transition-transform duration-150 [transform-box:fill-box] hover:scale-110"
-          [class.opacity-50]="table.status === 'blocked'"
+          [class.opacity-40]="table.status === 'blocked'"
           [class.pointer-events-none]="table.status === 'blocked'"
         >
           @if (table.shape === 'circle') {
@@ -85,30 +106,30 @@
               [attr.cy]="table.y"
               [attr.r]="table.r"
               [attr.fill]="getFill(table.status)"
-              [attr.stroke]="selectedTable()?.id === table.id ? '#38bdf8' : '#0a0a0a'"
-              [attr.stroke-width]="selectedTable()?.id === table.id ? 3 : 2"
+              [attr.stroke]="selectedTable()?.id === table.id ? '#d9ac45' : '#3a2716'"
+              [attr.stroke-width]="selectedTable()?.id === table.id ? 3 : 1.5"
             ></circle>
           }
 
           @if (table.shape === 'rect') {
             <rect
-              [attr.x]="table.x"
-              [attr.y]="table.y"
+              [attr.x]="table.x - (table.width ?? 0) / 2"
+              [attr.y]="table.y - (table.height ?? 0) / 2"
               [attr.width]="table.width"
               [attr.height]="table.height"
-              rx="8"
-              ry="8"
+              rx="6"
+              ry="6"
               [attr.fill]="getFill(table.status)"
-              [attr.stroke]="selectedTable()?.id === table.id ? '#38bdf8' : '#0a0a0a'"
-              [attr.stroke-width]="selectedTable()?.id === table.id ? 3 : 2"
+              [attr.stroke]="selectedTable()?.id === table.id ? '#d9ac45' : '#3a2716'"
+              [attr.stroke-width]="selectedTable()?.id === table.id ? 3 : 1.5"
             ></rect>
           }
 
           <text
             [attr.x]="table.x"
-            [attr.y]="table.y + 5"
+            [attr.y]="table.y + 4"
             text-anchor="middle"
-            class="fill-white text-[12px] font-semibold"
+            class="fill-white text-[10px] font-semibold"
             pointer-events="none"
           >
             {{ table.label }}
@@ -118,71 +139,69 @@
     </svg>
 
     <!-- Legend -->
-    <div class="mt-4 flex flex-wrap gap-4 text-xs text-neutral-400">
+    <div class="mt-4 flex flex-wrap gap-4 text-xs text-wood-600">
       <span class="flex items-center gap-2">
-        <span class="h-3 w-3 rounded-full bg-emerald-500"></span>
-        Available
+        <span class="h-3 w-3 rounded-full bg-duck-500"></span>
+        Disponible
       </span>
       <span class="flex items-center gap-2">
-        <span class="h-3 w-3 rounded-full bg-amber-500"></span>
-        Reserved
+        <span class="h-3 w-3 rounded-full bg-sun-400"></span>
+        Réservée
       </span>
       <span class="flex items-center gap-2">
-        <span class="h-3 w-3 rounded-full bg-red-500"></span>
-        Occupied
+        <span class="h-3 w-3 rounded-full bg-clay-500"></span>
+        Occupée
       </span>
       <span class="flex items-center gap-2">
-        <span class="h-3 w-3 rounded-full bg-gray-500"></span>
-        Blocked
+        <span class="h-3 w-3 rounded-full bg-stone-400"></span>
+        Bloquée
       </span>
     </div>
   </div>
 
   @if (selectedTable(); as table) {
-    <div class="w-full shrink-0 rounded-2xl bg-neutral-900 p-5 shadow-xl ring-1 ring-white/10 lg:w-72">
+    <div class="w-full shrink-0 rounded-2xl bg-white p-5 shadow-lg ring-1 ring-wood-200 lg:w-72">
       <div class="flex items-center justify-between">
-        <h3 class="text-lg font-semibold text-white">Table {{ table.label }}</h3>
+        <h3 class="font-serif text-lg text-wood-900">Table {{ table.label }}</h3>
         <span
-          class="rounded-full px-2.5 py-0.5 text-xs font-medium capitalize"
-          [class.bg-emerald-500/15]="table.status === 'available'"
-          [class.text-emerald-400]="table.status === 'available'"
-          [class.bg-amber-500/15]="table.status === 'reserved'"
-          [class.text-amber-400]="table.status === 'reserved'"
-          [class.bg-red-500/15]="table.status === 'occupied'"
-          [class.text-red-400]="table.status === 'occupied'"
-          [class.bg-gray-500/15]="table.status === 'blocked'"
-          [class.text-gray-400]="table.status === 'blocked'"
+          class="rounded-full px-2.5 py-0.5 text-xs font-medium"
+          [class.bg-duck-100]="table.status === 'available'"
+          [class.text-duck-600]="table.status === 'available'"
+          [class.bg-sun-300]="table.status === 'reserved'"
+          [class.text-wood-900]="table.status === 'reserved'"
+          [class.bg-clay-100]="table.status === 'occupied'"
+          [class.text-clay-600]="table.status === 'occupied'"
+          [class.bg-stone-200]="table.status === 'blocked'"
+          [class.text-stone-600]="table.status === 'blocked'"
         >
-          {{ table.status }}
+          {{ getLabel(table.status) }}
         </span>
       </div>
-      <p class="mt-1 text-sm text-neutral-400">Seats {{ table.capacity }}</p>
+      <p class="mt-1 text-sm text-wood-500">{{ table.capacity }} couverts</p>
 
       <div class="mt-5 flex flex-col gap-2">
         <button
           type="button"
           (click)="reserveSelectedTable()"
-          class="rounded-lg bg-amber-500 px-4 py-2 text-sm font-medium text-neutral-950 transition hover:bg-amber-400"
+          class="rounded-lg bg-sun-400 px-4 py-2 text-sm font-medium text-wood-900 transition hover:bg-sun-300"
         >
-          Reserve
+          Réserver
         </button>
         <button
           type="button"
           (click)="markOccupied(table.id)"
-          class="rounded-lg bg-red-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-400"
+          class="rounded-lg bg-clay-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-clay-600"
         >
-          Mark Occupied
+          Marquer occupée
         </button>
         <button
           type="button"
           (click)="closeModal()"
-          class="rounded-lg bg-neutral-800 px-4 py-2 text-sm font-medium text-neutral-300 transition hover:bg-neutral-700"
+          class="rounded-lg bg-wood-100 px-4 py-2 text-sm font-medium text-wood-700 transition hover:bg-wood-200"
         >
-          Close
+          Fermer
         </button>
       </div>
     </div>
   }
 </div>
-
-

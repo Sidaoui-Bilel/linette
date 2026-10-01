@@ -1,0 +1,210 @@
+<!-- Nav -->
+<nav class="fixed top-0 z-50 flex w-full items-center justify-between px-6 py-4 backdrop-blur-md bg-pine-900/40 lg:px-12">
+  <a href="#" class="font-serif text-2xl tracking-wide text-white">Linette</a>
+
+  <ul class="hidden items-center gap-9 text-xs font-medium uppercase tracking-widest text-wood-100 lg:flex">
+    @for (link of navLinks; track link.href) {
+      <li>
+        <a [href]="link.href" class="transition hover:text-sun-400">{{ link.label }}</a>
+      </li>
+    }
+  </ul>
+
+  <a
+    href="#reservation"
+    class="rounded-full bg-sun-400 px-5 py-2 text-xs font-semibold uppercase tracking-widest text-pine-900 transition hover:bg-sun-300"
+  >
+    Réserver
+  </a>
+</nav>
+
+<main class="font-sans text-wood-900">
+  <!-- Hero -->
+  <section
+    class="relative flex min-h-screen items-end bg-cover bg-center"
+    style="background-image: url('/images/interior-garland.jpg')"
+  >
+    <div class="absolute inset-0 bg-gradient-to-t from-pine-900 via-pine-900/50 to-pine-900/10"></div>
+
+    <div class="relative z-10 w-full px-6 pb-20 lg:px-12">
+      <p class="text-xs font-semibold uppercase tracking-[0.35em] text-sun-400">Café &middot; Resto</p>
+      <h1 class="mt-4 max-w-2xl font-serif text-6xl leading-[1.05] text-white sm:text-7xl">
+        Linette
+      </h1>
+      <p class="mt-5 max-w-md text-base leading-relaxed text-wood-100">
+        Une adresse chaleureuse où le bois brut, le bleu canard et une guirlande de verdure
+        habillent une cuisine de saison, généreuse et sans chichi.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-4">
+        <a
+          href="#reservation"
+          class="rounded-full bg-sun-400 px-7 py-3 text-xs font-semibold uppercase tracking-widest text-pine-900 transition hover:bg-sun-300"
+        >
+          Réserver une table
+        </a>
+        <a
+          href="#carte"
+          class="rounded-full border border-white/40 px-7 py-3 text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-white/10"
+        >
+          Voir la carte
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Histoire -->
+  <section id="histoire" class="bg-wood-50 px-6 py-28 lg:px-12">
+    <div class="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
+      <img
+        src="/images/interior-wide.jpg"
+        alt="Salle du restaurant Linette, banquettes bleu canard et chaises moutarde"
+        class="aspect-[4/3] w-full rounded-sm object-cover shadow-xl"
+      />
+
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-duck-600">Notre histoire</p>
+        <h2 class="mt-4 font-serif text-4xl leading-tight text-wood-900">
+          Un lieu pensé<br />comme à la maison
+        </h2>
+        <div class="mt-6 h-px w-16 bg-sun-500"></div>
+        <p class="mt-6 leading-relaxed text-wood-700">
+          Linette est née d'une envie simple&nbsp;: offrir une cuisine honnête dans un décor
+          chaleureux, baigné de lumière. Les banquettes bleu canard et les touches de jaune
+          moutarde répondent au bois brut, tandis qu'une guirlande de verdure et de fleurs
+          s'invite au plafond.
+        </p>
+        <p class="mt-4 leading-relaxed text-wood-700">
+          En cuisine, des produits de saison travaillés avec soin pour une carte qui change au
+          rythme des récoltes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ambiance -->
+  <section id="ambiance" class="bg-white px-6 py-28 lg:px-12">
+    <div class="mx-auto max-w-6xl">
+      <div class="max-w-xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-duck-600">L'ambiance</p>
+        <h2 class="mt-4 font-serif text-4xl text-wood-900">Entre verdure et lumière</h2>
+      </div>
+
+      <div class="mt-12 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
+        <img
+          src="/images/interior-garland.jpg"
+          alt="Guirlande de verdure et lanternes en rotin suspendues au plafond"
+          class="col-span-2 row-span-2 aspect-square w-full rounded-sm object-cover transition duration-500 hover:scale-[1.02] lg:aspect-auto lg:h-full"
+        />
+        <img
+          src="/images/interior-wide.jpg"
+          alt="Salle à manger avec banquettes bleu canard"
+          class="col-span-2 aspect-[16/10] w-full rounded-sm object-cover transition duration-500 hover:scale-[1.02] lg:col-span-2"
+        />
+        <img
+          src="/images/storefront.jpg"
+          alt="Terrasse et devanture verte du restaurant Linette"
+          class="col-span-2 aspect-[16/10] w-full rounded-sm object-cover transition duration-500 hover:scale-[1.02] lg:col-span-2"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Carte -->
+  <section id="carte" class="bg-pine-900 px-6 py-28 lg:px-12">
+    <div class="mx-auto max-w-4xl">
+      <div class="text-center">
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-sun-400">Chaque jour</p>
+        <h2 class="mt-4 font-serif text-4xl text-white">La carte</h2>
+      </div>
+
+      <div class="mt-16 grid gap-14 lg:grid-cols-2">
+        <div>
+          <h3 class="font-serif text-xl text-sun-400">Entrées</h3>
+          <ul class="mt-5 space-y-4">
+            @for (item of menu.entrees; track item.name) {
+              <li class="flex items-baseline justify-between gap-4 border-b border-white/10 pb-3">
+                <span class="text-wood-100">{{ item.name }}</span>
+                <span class="shrink-0 font-serif text-sun-300">{{ item.price }}</span>
+              </li>
+            }
+          </ul>
+
+          <h3 class="mt-10 font-serif text-xl text-sun-400">Desserts</h3>
+          <ul class="mt-5 space-y-4">
+            @for (item of menu.desserts; track item.name) {
+              <li class="flex items-baseline justify-between gap-4 border-b border-white/10 pb-3">
+                <span class="text-wood-100">{{ item.name }}</span>
+                <span class="shrink-0 font-serif text-sun-300">{{ item.price }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-serif text-xl text-sun-400">Plats</h3>
+          <ul class="mt-5 space-y-4">
+            @for (item of menu.plats; track item.name) {
+              <li class="flex items-baseline justify-between gap-4 border-b border-white/10 pb-3">
+                <span class="text-wood-100">{{ item.name }}</span>
+                <span class="shrink-0 font-serif text-sun-300">{{ item.price }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Réservation -->
+  <section id="reservation" class="bg-wood-50 px-6 py-28 lg:px-12">
+    <div class="mx-auto max-w-xl text-center">
+      <p class="text-xs font-semibold uppercase tracking-[0.35em] text-duck-600">Réserver une table</p>
+      <h2 class="mt-4 font-serif text-4xl text-wood-900">Réservation</h2>
+      <p class="mt-5 leading-relaxed text-wood-700">
+        Choisissez une table disponible sur le plan de salle pour envoyer votre demande de
+        réservation.
+      </p>
+    </div>
+
+    <div class="mx-auto mt-14 max-w-5xl">
+      <app-floor-structure></app-floor-structure>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <footer id="contact" class="relative bg-cover bg-center px-6 py-20 lg:px-12" style="background-image: url('/images/storefront.jpg')">
+    <div class="absolute inset-0 bg-pine-900/85"></div>
+
+    <div class="relative z-10 mx-auto grid max-w-6xl gap-10 md:grid-cols-3">
+      <div>
+        <p class="font-serif text-2xl text-white">Linette</p>
+        <p class="mt-3 max-w-xs text-sm leading-relaxed text-wood-100">
+          Café &amp; resto de quartier &mdash; cuisine de saison, décor chaleureux, lumière
+          naturelle et une guirlande de verdure.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-sun-400">Horaires</p>
+        <ul class="mt-4 space-y-1 text-sm text-wood-100">
+          <li>Mardi – Samedi : 12h–14h30 &middot; 19h–22h30</li>
+          <li>Dimanche &amp; Lundi : fermé</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-sun-400">Contact</p>
+        <ul class="mt-4 space-y-1 text-sm text-wood-100">
+          <li>12 rue des Tilleuls, 75000 Paris</li>
+          <li>01 23 45 67 89</li>
+          <li>contact&#64;linette-restaurant.fr</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="relative z-10 mx-auto mt-14 max-w-6xl border-t border-white/15 pt-6 text-center text-xs text-wood-200">
+      &copy; 2026 Linette. Tous droits réservés.
+    </div>
+  </footer>
+</main>

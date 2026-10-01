@@ -1,3 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+@theme {
+  /* Bois brut */
+  --color-wood-50: #faf6f0;
+  --color-wood-100: #f2e7d6;
+  --color-wood-200: #e4cfa9;
+  --color-wood-400: #c89b6c;
+  --color-wood-600: #9c6b3e;
+  --color-wood-700: #7d5330;
+  --color-wood-800: #5e3e24;
+  --color-wood-900: #3a2716;
+
+  /* Bleu canard (banquettes) */
+  --color-duck-100: #dde9e7;
+  --color-duck-300: #85b4ae;
+  --color-duck-500: #2d6b64;
+  --color-duck-600: #235550;
+  --color-duck-700: #1b4440;
+  --color-duck-900: #112b28;
+
+  /* Vert bouteille (devanture, carte) */
+  --color-pine-100: #e1e8df;
+  --color-pine-300: #8aab86;
+  --color-pine-500: #3d6b43;
+  --color-pine-700: #26472b;
+  --color-pine-800: #1c361f;
+  --color-pine-900: #142818;
+
+  /* Touche de jaune moutarde */
+  --color-sun-300: #e8c87c;
+  --color-sun-400: #d9ac45;
+  --color-sun-500: #c0922c;
+
+  /* Verdure claire (accents, fonds légers) */
+  --color-leaf-100: #e6ecdf;
+  --color-leaf-300: #a9c79a;
+  --color-leaf-500: #5c8a52;
+
+  /* Terracotta (statut occupé) */
+  --color-clay-100: #f0ddd4;
+  --color-clay-500: #b1543f;
+  --color-clay-600: #954434;
+
+  --font-serif: 'Georgia', 'Iowan Old Style', 'Palatino Linotype', serif;
+}
